@@ -31,19 +31,23 @@ def main():
         choice = input("Enter your choice: ")
 
         if choice == '1':
+            item = input("Enter the item to add: ")
+            add_item(item)
            
-            pass
         elif choice == '2':
+              item = input("Enter the item to remove: ")
+              add_item(item)
             
-            pass
+      
         elif choice == '3':
+            display_list()
            
             pass
         elif choice == '4':
             print("Goodbye!")
             break
         else:
-            print("Invalid choice. Please try again.")
+            print("Invalid choice.Please try again.")
 
 if __name__ == "__main__":
     main()         
