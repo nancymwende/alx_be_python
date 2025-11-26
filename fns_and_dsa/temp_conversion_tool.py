@@ -1,26 +1,30 @@
-def FAHRENHEIT_TO_CELSIUS_FACTOR(fahrenheit):
-    """Convert Fahrenheit to Celsius."""
-    return (fahrenheit - 32) * 5.0 / 9.0
-def CELSIUS_TO_FAHRENHEIT_FACTOR(celsius):
-    """Convert Celsius to Fahrenheit."""
-    return (celsius * 9.0 / 5.0) + 32
+FAHRENHEIT_TO_CELSIUS_FACTOR = 5/9
+CELSIUS_TO_FAHRENHEIT_FACTOR = 9/5
 
-def convert_temperature(value, scale):
-    """Convert temperature between Celsius and Fahrenheit."""
-    scale = scale.strip().lower()
-    if scale in ("celsius", "c"):
-        return FAHRENHEIT_TO_CELSIUS_FACTOR(value)
-    elif scale in ("fahrenheit", "f"):
-        return CELSIUS_TO_FAHRENHEIT_FACTOR(value)
-    else:
-        return "Error: Invalid temperature scale."
-    
+def convert_to_celsius(fahrenheit):
+    """Convert Fahrenheit to Celsius using global factor."""
+    return (fahrenheit - 32) * FAHRENHEIT_TO_CELSIUS_FACTOR
+
+def convert_to_fahrenheit(celsius):
+    """Convert Celsius to Fahrenheit using global factor."""
+    return (celsius * CELSIUS_TO_FAHRENHEIT_FACTOR) + 32
+
 def main():
-    print("Temperature Conversion Tool")
-    value = float(input("Enter the temperature value to convert: "))
-    scale = input("Enter the scale to convert to (Celsius or Fahrenheit): ")
-    
-    result = convert_temperature(value, scale)
-    print(f"Converted temperature: {result}")
+    try:
+        value = float(input("Enter the temperature to convert: "))
+    except ValueError:
+        raise ValueError("Invalid temperature. Please enter a numeric value.")
+
+    scale = input("Is this temperature in Celsius or Fahrenheit? (C/F): ").strip().lower()
+
+    if scale == 'c':
+        result = convert_to_fahrenheit(value)
+        print(f"{value}°C is {result}°F")
+    elif scale == 'f':
+        result = convert_to_celsius(value)
+        print(f"{value}°F is {result}°C")
+    else:
+        raise ValueError("Invalid temperature. Please enter a numeric value.")
+
 if __name__ == "__main__":
     main()
