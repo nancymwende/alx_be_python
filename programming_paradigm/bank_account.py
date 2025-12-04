@@ -1,21 +1,19 @@
 class BankAccount:
     def __init__(self, initial_balance=0):
-        self.balance = initial_balance
+        self.balance = initial_balance  # ← This line is required
 
     def deposit(self, amount):
         if amount > 0:
-         self.balance += amount
+            self.balance += amount
         else:
-          print("Deposit amount must be positive")
-
+            print("Deposit amount must be positive.")
 
     def withdraw(self, amount):
         if 0 < amount <= self.balance:
             self.balance -= amount
             return True
         else:
-            return False  
+            return False
 
     def display_balance(self):
-     return self.balance
-   
+        return self.balance
